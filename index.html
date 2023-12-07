@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="mb-3 d-flex">
+
+            <input type="text" class="form-control w-50" name="" id="api" aria-describedby="helpId" placeholder="" />
+            <button type="button" onclick="data()" class="btn btn-primary ms-3">
+                Button
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-danger table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">SNO</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">URL</th>
+                        <th scope="col">Image</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!-- <tr class="">
+                        <td scope="row">R1C1</td>
+                        <td>R1C2</td>
+                        <td>R1C3</td>
+                    </tr> -->
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+
+    <script>
+
+             async function data(){
+
+             var data = await fetch("https://jsonplaceholder.typicode.com/posts");
+                console.log(data)
+                 data = await data.json();
+            console.log(data)
+
+            var str = ""
+
+             data.map((element, index) =>{
+                return(
+                    str += `
+                   <tr class="">
+                       <td scope="row">${index}</td>
+                        <td>${element.title}</td>
+                         <td>${element.body}</td>
+                   </tr>
+                    `
+                 )
+             })
+             var tbody = document.getElementById("tbody")
+             tbody.innerHTML = str
+             alert("your Program has been executed")
+             }
+
+        
+    </script>
+</body>
+
+</html>
